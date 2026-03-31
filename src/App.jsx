@@ -4,10 +4,12 @@ import RoutesBridge from './utils/RoutesBridge'
 function App() {
 
   return (
-    <main>
-      {/* THIS RoutesBridge file have imported all pages */}
-      <RoutesBridge />
-    </main>
+    <>
+      <main>
+        {/* THIS RoutesBridge file have imported all pages */}
+        <RoutesBridge />
+      </main>
+    </>
   )
 }
 
