@@ -9,7 +9,6 @@ function App() {
       <main className='min-h-screen'>
         {/* THIS RoutesBridge file have imported all pages */}
         <RoutesBridge />
-        
       </main>
       <Footer />
     </>
