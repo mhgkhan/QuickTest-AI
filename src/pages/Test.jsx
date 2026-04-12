@@ -87,11 +87,11 @@ const Test = () => {
                 })
               }
 
-              <button onClick={nextMCQS} disabled={currentMcqsNumber == mcqs.length - 1} className="next p-2 text-lg rounded-lg bg-emerald-900 text-white font-bold w-[50%] mx-auto block cursor-pointer hover:bg-emerald-800">Next</button>
+              
               {
                 solvedMCQS.length == mcqs.length-1 ? <button onClick={submitTest} className="next p-2 text-lg rounded-lg bg-blue-700 my-2 text-white font-bold w-[50%] mx-auto block cursor-pointer hover:bg-emerald-800">Submit Test</button>
 
-                  : ""
+                  : <button onClick={nextMCQS} disabled={currentMcqsNumber == mcqs.length - 1} className="next p-2 text-lg rounded-lg bg-emerald-900 text-white font-bold w-[50%] mx-auto block cursor-pointer hover:bg-emerald-800">Next</button>
               }
             </div>
           </div>
