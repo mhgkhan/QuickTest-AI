@@ -17,8 +17,8 @@ const Test = () => {
               <h1 className="text-3xl text-center my-3  font-bold ">TEST FOR {testName}</h1>
               <p className="text-center my-1">Please make sure to choose the mcqs length and time. Note: The default test time is 30 minutes. </p>
 
-              <div className="flex items-center justify-center gap-10">
-                <select name="length" id="mcqslength" className="my-5 p-1 border borde-2 border-blue-500 hover:shadow-md hover:shadow-blue-500 rounded-md w-[50%]">
+              <div className="flex items-center justify-center md:gap-10 gap-5 md:flex-row flex-col">
+                <select name="length" id="mcqslength" className=" md:my-5 my-1 p-1 border borde-2 border-blue-500 hover:shadow-md hover:shadow-blue-500 rounded-md w-[50%]">
                   <option selected disabled  >Select MCQS Length </option>
                   <option>30</option>
                   <option>50</option>
@@ -27,7 +27,7 @@ const Test = () => {
                 </select>
 
 
-                <select name="typemcqs" id="typemcqs" className="my-5 p-1 border borde-2 border-blue-500 hover:shadow-md hover:shadow-blue-500 rounded-md w-[50%]">
+                <select name="typemcqs" id="typemcqs" className=" md:my-5 my-1 p-1 border borde-2 border-blue-500 hover:shadow-md hover:shadow-blue-500 rounded-md w-[50%]">
                   <option selected disabled >MCQS Level  </option>
                   <option>Basic </option>
                   <option>Intermediate </option>
@@ -36,7 +36,7 @@ const Test = () => {
 
 
               </div>
-              <button className="bg-emerald-800 text-white py-2 px-4 rounded-lg hover:bg-emerald-900 cursor-pointer text-center mx-auto block">
+              <button className="bg-emerald-800 text-white py-2 px-4 rounded-lg hover:bg-emerald-900 cursor-pointer text-center mx-auto block md:my-auto my-5">
                 Start
               </button>
             </div>
@@ -52,7 +52,7 @@ const Test = () => {
         <div className="container mx-auto">
           <div className="md:w-[70%] w-full mx-auto p-5 rounded-md shadow-md shadow-gray-400" >
             <div className="question-block w-full flex items-center justify-start">
-              <span className="text-3xl text-gray-500 px-2">Q-1</span>
+              <span className="md:text-3xl text-2xl text-gray-500 px-2">Q-1</span>
               <p className="question px-1 text-lg font-bold"> What is the capital of France? </p>
             </div>
 
@@ -65,25 +65,6 @@ const Test = () => {
 
 
 
-            <div className="options w-full flex flex-col gap-3 my-5">
-              <label className="option flex items-center justify-start gap-5 w-[90%] mx-auto bg-emerald-100 rounded-md p-2 cursor-pointer hover:bg-emerald-200 transition-all duration-200">
-                <input type="radio" name="q1" value="berlin" className="w-[20px] h-[20px] " />  Berlin
-              </label>
-            </div>
-
-
-            <div className="options w-full flex flex-col gap-3 my-5">
-              <label className="option flex items-center justify-start gap-5 w-[90%] mx-auto bg-emerald-100 rounded-md p-2 cursor-pointer hover:bg-emerald-200 transition-all duration-200">
-                <input type="radio" name="q1" value="berlin" className="w-[20px] h-[20px] " />  Berlin
-              </label>
-            </div>
-
-
-            <div className="options w-full flex flex-col gap-3 my-5">
-              <label className="option flex items-center justify-start gap-5 w-[90%] mx-auto bg-emerald-100 rounded-md p-2 cursor-pointer hover:bg-emerald-200 transition-all duration-200">
-                <input type="radio" name="q1" value="berlin" className="w-[20px] h-[20px] " />  Berlin
-              </label>
-            </div>
 
 
 
