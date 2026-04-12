@@ -3,7 +3,7 @@ import { Link } from "react-router"
 const Header = () => {
     return (
         <header className='w-full bg-emerald-800'>
-            <div className="container mx-auto flex items-center justify-between gap-2">
+            <div className="container mx-auto flex items-center justify-between gap-2 md:flex-row flex-col">
                 <div className="logo py-3">
                     <Link to={"/"} className="py-2 px-1 text-2xl font-bold my-1 text-white" >QuickTest AI</Link>
                 </div>
@@ -15,7 +15,7 @@ const Header = () => {
                             { text: "CONTACT US", link: "/contact" }
                         ]).map((ele, ind) => {
                             return <li key={ind}>
-                                <Link className="font-bold text-lg text-white px-2 py-1">{ele.text}</Link>
+                                <Link className="font-bold md:text-lg text-sm text-white px-2 py-1">{ele.text}</Link>
                             </li>
                         })}
                     </ul>
