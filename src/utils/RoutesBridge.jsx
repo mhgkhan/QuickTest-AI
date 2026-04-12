@@ -2,6 +2,7 @@ import { Routes, BrowserRouter, Route, Router } from "react-router";
 import Home from "../pages/Home";
 import Test from "../pages/Test";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 
 export default function RoutesBridge({ children }) {
