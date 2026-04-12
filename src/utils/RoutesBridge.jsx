@@ -10,9 +10,10 @@ export default function RoutesBridge({ children }) {
             <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
+                {/* <Route path="/tests" element={<AllTests />} /> */}
 
                 <Route path="/tests" element={<Test />}>
-                    <Route index element={<Home />} />
+                    <Route index element={<Test />} />
                     <Route path=":testName" element={<Test />} />
                 </Route>
             </Routes>
