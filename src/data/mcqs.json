@@ -1,0 +1,32 @@
+[
+  {
+    "id": "mcq1",
+    "question": "What is the capital of France?",
+    "choices": ["Berlin", "Madrid", "Paris", "Rome"],
+    "correct_choice": "3"
+  },
+  {
+    "id": "mcq2",
+    "question": "Which planet is known as the Red Planet?",
+    "choices": ["Earth", "Mars", "Jupiter", "Venus"],
+    "correct_choice": "2"
+  },
+  {
+    "id": "mcq3",
+    "question": "Who wrote the play 'Romeo and Juliet'?",
+    "choices": ["William Shakespeare", "Charles Dickens", "Leo Tolstoy", "Mark Twain"],
+    "correct_choice": "1"
+  },
+  {
+    "id": "mcq4",
+    "question": "What is the largest ocean on Earth?",
+    "choices": ["Atlantic Ocean", "Indian Ocean", "Pacific Ocean", "Arctic Ocean"],
+    "correct_choice": "3"
+  },
+  {
+    "id": "mcq5",
+    "question": "Which element has the chemical symbol 'O'?",
+    "choices": ["Gold", "Oxygen", "Osmium", "Silver"],
+    "correct_choice": "2"
+  }
+]

@@ -1,6 +1,12 @@
 import { FaBook } from "react-icons/fa"
 import { Link } from "react-router"
 const Home = () => {
+
+    
+
+
+
+
     return (
         <>
             <section className='hero md:h-[50vh] h-auto flex items-center justify-center flex-col'>
@@ -23,25 +29,25 @@ const Home = () => {
                     <div className="right-side md:w-[50%] w-full">
 
                         <div className="links flex items-center justify-center flex-wrap md:gap-5 gap-2  mt-5 p-2">
-                           
+
                             <Link to={"/tests/genralknowledge"} className="md:w-50 w-auto h-auto p-2 rounded-lg bg-emerald-800 shadow-emerald-800 flex items-center justify-center gap-5 flex-col">
                                 <span className="md:text-5xl text-3xl text-yellow-400"><FaBook /> </span>
                                 <p className="md:text-xl text-sm text-white">General Knowledge </p>
                             </Link>
 
-                           
+
                             <Link to={"/tests/genralknowledge"} className="md:w-50 w-auto h-auto p-2 rounded-lg bg-emerald-800 shadow-emerald-800 flex items-center justify-center gap-5 flex-col">
                                 <span className="md:text-5xl text-3xl text-yellow-400"><FaBook /> </span>
                                 <p className="md:text-xl text-sm text-white">General Knowledge </p>
                             </Link>
 
-                           
+
                             <Link to={"/tests/genralknowledge"} className="md:w-50 w-auto h-auto p-2 rounded-lg bg-emerald-800 shadow-emerald-800 flex items-center justify-center gap-5 flex-col">
                                 <span className="md:text-5xl text-3xl text-yellow-400"><FaBook /> </span>
                                 <p className="md:text-xl text-sm text-white">General Knowledge </p>
                             </Link>
 
-                           
+
                             <Link to={"/tests/genralknowledge"} className="md:w-50 w-auto h-auto p-2 rounded-lg bg-emerald-800 shadow-emerald-800 flex items-center justify-center gap-5 flex-col">
                                 <span className="md:text-5xl text-3xl text-yellow-400"><FaBook /> </span>
                                 <p className="md:text-xl text-sm text-white">General Knowledge </p>
