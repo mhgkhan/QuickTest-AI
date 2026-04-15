@@ -1,9 +1,10 @@
 import { useMatch } from "react-router"
 import mcqs from "../data/mcqs.json";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 
 const Test = () => {
+  const reference = useRef();
   const match = useMatch("/tests/:testName");
 
   const { testName } = match.params;
@@ -17,14 +18,24 @@ const Test = () => {
   const [solvedMCQS, setSolvedMCQS] = useState([]);
   const [currentMcqsNumber, setCurectMcqsNumber] = useState(0);
 
+  const [choosed, setChoosed] = useState("");
+
+  const [showResult, setShwoResult] = useState(false);
 
   const nextMCQS = () => {
-    setSolvedMCQS([...solvedMCQS, allMCQS[currentMcqsNumber]]);
+    const thisMcqs = allMCQS[currentMcqsNumber];
+    thisMcqs.userAnswer = choosed;
+
+    setSolvedMCQS(solvedMCQS => [...solvedMCQS, thisMcqs]);
+
     setCurectMcqsNumber(currentMcqsNumber + 1);
+    setChoosed("");
+    reference.current.reset();
+    console.log("Solved MCQS: ", solvedMCQS);
   }
 
   const submitTest = () => {
-
+    setShwoResult(true);
   }
 
   return (
@@ -70,28 +81,72 @@ const Test = () => {
           <div className="container mx-auto">
             <div className="md:w-[70%] w-full mx-auto p-5 rounded-md shadow-md shadow-gray-400" >
 
-
-              <div className="question-block w-full flex items-center justify-start">
-                <span className="md:text-3xl text-2xl text-gray-500 px-2">Q-{currentMcqsNumber + 1}</span>
-                <p className="question px-1 text-lg font-bold"> {allMCQS[currentMcqsNumber]?.question} </p>
-              </div>
-
               {
-                allMCQS[currentMcqsNumber]?.choices.map((option, ind) => {
-                  return <div key={ind} className="options w-full flex flex-col gap-3 my-5">
-                    <label className="option flex items-center justify-start gap-5 w-[90%] mx-auto bg-emerald-100 rounded-md p-2 cursor-pointer hover:bg-emerald-200 transition-all duration-200">
-                      <input type="radio" name="q1" value="{option}" className="w-[20px] h-[20px] " />  {option}
-                    </label>
-                  </div>
+                showResult ? <table border="1" className="border-1 border-black w-full rounded-md">
+                  <thead className="border-b border-black">
+                    <tr>
+                      <th>S.No</th>
+                      <th>Question</th>
+                      <th>Correct Answer </th>
+                      <th> Your Answer </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {
+                      solvedMCQS.map((mcqs, ind) => {
+                        return <tr className="even:bg-gray-100 odd:bg-white border-b border-black" key={ind} >
 
-                })
+                          <td className="border-r border-black p-1 text-center ">{ind + 1}</td>
+                          <td className="border-r border-black p-1 text-center ">{mcqs.question}</td>
+
+                          <td className="border-r border-black p-1 text-center ">{mcqs.choices[mcqs.correct_choice - 1]}</td>
+                          <td className="border-r border-black p-1 text-center ">{mcqs.userAnswer}{mcqs.choices[mcqs.correct_choice-1] == mcqs.userAnswer? " ✓" : " ✗"} </td>
+
+                        </tr>
+                      })
+                    }
+                  </tbody>
+                  <tfoot>
+                    <tr>  
+                      <td colSpan={2} className="border-t border-black p-1 text-center font-bold">Total Score</td>
+                      <td colSpan={2} className="border-t border-black p-1 text-center font-bold">{solvedMCQS.filter(mcqs => mcqs.choices[mcqs.correct_choice - 1] == mcqs.userAnswer).length} / {mcqsLength}</td>
+                    </tr>
+                  </tfoot>
+                </table> : ""
               }
 
-              
-              {
-                solvedMCQS.length == mcqs.length-1 ? <button onClick={submitTest} className="next p-2 text-lg rounded-lg bg-blue-700 my-2 text-white font-bold w-[50%] mx-auto block cursor-pointer hover:bg-emerald-800">Submit Test</button>
+              <div className="question-block w-full flex items-center justify-start">
+                <span className="md:text-3xl text-2xl text-gray-500 px-2">{currentMcqsNumber < allMCQS.length ? "Q-" + (currentMcqsNumber + 1) : ""}</span>
+                <p className="question px-1 text-lg font-bold">{currentMcqsNumber < allMCQS.length ? allMCQS[currentMcqsNumber]?.question : ""}</p>
+              </div>
 
-                  : <button onClick={nextMCQS} disabled={currentMcqsNumber == mcqs.length - 1} className="next p-2 text-lg rounded-lg bg-emerald-900 text-white font-bold w-[50%] mx-auto block cursor-pointer hover:bg-emerald-800">Next</button>
+              <form onSubmit={e => e.preventDefault()} ref={reference}>
+                {
+                  allMCQS[currentMcqsNumber]?.choices.map((option, ind) => {
+
+                    return <div key={ind} className="options w-full flex flex-col gap-3 my-5">
+                      <label className="option flex items-center justify-start gap-5 w-[90%] mx-auto bg-emerald-100 rounded-md p-2 cursor-pointer hover:bg-emerald-200 transition-all duration-200">
+                        <input type="radio" name="q1" value={`${option}`} className="w-[20px] h-[20px] " onChange={(e) => setChoosed(e.target.value)} />  {option}
+                      </label>
+                    </div>
+
+                  })
+                }
+
+              </form>
+
+
+              {/* {
+                solvedMCQS.length == mcqsLength ? <button onClick={submitTest} className="next p-2 text-lg rounded-lg bg-blue-700 my-2 text-white font-bold w-[50%] mx-auto block cursor-pointer hover:bg-emerald-800">Submit Test</button>
+                  : ""
+              } */}
+              {
+                solvedMCQS.length == mcqsLength ? !showResult? <button onClick={submitTest} className="next p-2 text-lg rounded-lg bg-blue-700 my-2 text-white font-bold w-[50%] mx-auto block cursor-pointer hover:bg-emerald-800">Submit Test</button>
+                  : <button onClick={()=>window.location.href = "/"} className="next p-2 text-lg rounded-lg bg-blue-700 my-2 text-white font-bold w-[50%] mx-auto block cursor-pointer hover:bg-emerald-800"> Make Another Test </button>
+                  :""
+              }
+              {
+                solvedMCQS.length != allMCQS.length ? <button onClick={nextMCQS} disabled={!choosed} className="next p-2 text-lg rounded-lg bg-blue-700 my-2 text-white font-bold w-[50%] mx-auto block cursor-pointer hover:bg-emerald-800">Next</button> : ""
               }
             </div>
           </div>
