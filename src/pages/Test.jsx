@@ -136,12 +136,8 @@ const Test = () => {
               </form>
 
 
-              {/* {
-                solvedMCQS.length == mcqsLength ? <button onClick={submitTest} className="next p-2 text-lg rounded-lg bg-blue-700 my-2 text-white font-bold w-[50%] mx-auto block cursor-pointer hover:bg-emerald-800">Submit Test</button>
-                  : ""
-              } */}
               {
-                solvedMCQS.length == mcqsLength ? !showResult? <button onClick={submitTest} className="next p-2 text-lg rounded-lg bg-blue-700 my-2 text-white font-bold w-[50%] mx-auto block cursor-pointer hover:bg-emerald-800">Submit Test</button>
+                solvedMCQS.length == mcqsLength ? !showResult? <button onClick={submitTest} className="next p-2 text-lg rounded-lg bg-blue-700 my-2 text-white font-bold w-[50%] mx-auto block cursor-pointer hover:bg-emerald-800">  View Result </button>
                   : <button onClick={()=>window.location.href = "/"} className="next p-2 text-lg rounded-lg bg-blue-700 my-2 text-white font-bold w-[50%] mx-auto block cursor-pointer hover:bg-emerald-800"> Make Another Test </button>
                   :""
               }
