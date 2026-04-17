@@ -31,7 +31,6 @@ const Test = () => {
     setCurectMcqsNumber(currentMcqsNumber + 1);
     setChoosed("");
     reference.current.reset();
-    console.log("Solved MCQS: ", solvedMCQS);
   }
 
   const submitTest = () => {
